@@ -8,6 +8,14 @@ use Model\Entity\Product;
 
 class ProductRepository
 {
+    public function __clone()
+    {
+        $this->id = $this->id + 1;
+        // $this->name->addToPage($this);
+        // $this->comments = [];
+        // $this->date = new \DateTime;
+    }
+
     /**
      * Поиск продуктов по массиву id
      * @param int[] $ids
