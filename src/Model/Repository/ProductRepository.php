@@ -8,12 +8,11 @@ use Model\Entity\Product;
 
 class ProductRepository
 {
+    // клонируются только примитивные типы, name и price у нас, скорее всего, обычные строки, так что порядок
+    // Добавляем
     public function __clone()
     {
         $this->id = $this->id + 1;
-        // $this->name->addToPage($this);
-        // $this->comments = [];
-        // $this->date = new \DateTime;
     }
 
     /**
@@ -27,13 +26,17 @@ class ProductRepository
             return [];
         }
 
+        $product = new Product(
+            $item['id'] = 1,
+            $item['name'] = 'PHP',
+            $item['price'] =  15300,
+        );
+        $products = 10; // предположим у нас их столько
+
         $productList = [];
-        foreach ($this->getDataFromSource(['id' => $ids]) as $item) {
-            $productList[] = new Product(
-                $item['id'],
-                $item['name'],
-                $item['price']
-            );
+
+        for ($i = 1; $i <= $products; $i++) {
+            $productList[] = clone $product;
         }
 
         return $productList;
@@ -45,13 +48,15 @@ class ProductRepository
      */
     public function fetchAll(): array
     {
+        $product = new Product(
+            $item['id'] = 1,
+            $item['name'] = 'PHP',
+            $item['price'] =  15300,
+        );
+
         $productList = [];
         foreach ($this->getDataFromSource() as $item) {
-            $productList[] = new Product(
-                $item['id'],
-                $item['name'],
-                $item['price']
-            );
+            $productList[] = $productList[] = clone $product; // или так, но это странно. Достать все товары, а потом на число этих товаров создать копии первого товара
         }
 
         return $productList;
