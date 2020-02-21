@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Service\SocialNetwork\PostInterface;
 
 /**
- * Интерфейс, который использует наше приложение для отправки оповещения.
+ * Интерфейс, который использует наше приложение для публикации поста в соц сеть
  */
 interface PostInterface
 {

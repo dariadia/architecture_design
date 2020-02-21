@@ -34,7 +34,7 @@ class TwitterPost implements PostInterface
     public function post(): void
     {
         echo "Публикуем запись в Twitter от лица "
-            . "'{$this->author->getLogin()}' с текстом "
+            . "'{$this->author->getUsername()}' с текстом "
             . "'$this->post'.\n";
     }
 }
