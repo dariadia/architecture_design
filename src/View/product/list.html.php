@@ -11,17 +11,22 @@ use Model\Entity\Product;
 $body = function () use ($productList, $path) {
 ?>
     <table cellpadding="40" cellspacing="0" border="0">
-        <tr><td colspan="3" align="center">Наши курсы</td></tr>
+        <tr>
+            <td colspan="3" align="center">Наши курсы</td>
+        </tr>
         <tr>
             <td colspan="3" align="left">Сортировать по:
+                <!-- без стратегии написать так и проще -->
+                <!-- $productList->sortBy('price') -->
                 <a href="<?= $path('product_list') ?>?sort=price">Цене</a>
+                <!-- $productList->sortBy('name') -->
                 <a href="<?= $path('product_list') ?>?sort=name">Названию</a>
             </td>
         </tr>
 
-        <?php for ($i = 0; $i < count($productList);): ?>
+        <?php for ($i = 0; $i < count($productList);) : ?>
             <tr>
-                <?php for ($col = 0; $col < 3; $col++, $i++): ?>
+                <?php for ($col = 0; $col < 3; $col++, $i++) : ?>
                     <td style="text-align: center">
                         <a href="<?= $path('product_info', ['id' => $productList[$i]->getId()]) ?>"><?= $productList[$i]->getName() ?></a>
                         <br /><br />
