@@ -16,33 +16,6 @@ use Symfony\Component\HttpFoundation\Response;
 class OrderController extends BaseController
 {
     /**
-     * Корзина
-     * @param Request $request
-     * @return Response
-     * @throws Exception
-     */
-    public function infoAction(Request $request): Response
-    {
-        if ($request->isMethod(Request::METHOD_POST)) {
-            return $this->redirect('order_checkout');
-        }
-
-        $basket = new Basket($request->getSession());
-        $productList = $basket->getProductsInfo();
-        $totalPrice = $basket->calculateProductsTotalPrice();
-        $isLogged = (new Security($request->getSession()))->isLogged();
-
-        return $this->render(
-            'order/info.html.php',
-            [
-                'productList' => $productList,
-                'isLogged' => $isLogged,
-                'totalPrice' => $totalPrice
-            ]
-        );
-    }
-
-    /**
      * Оформление заказа
      * @param Request $request
      * @return Response
